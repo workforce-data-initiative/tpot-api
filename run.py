@@ -1,4 +1,4 @@
-from webapp import app
+from etp_api import app
 import os
 
 port = os.environ.get('PORT', 5002)
