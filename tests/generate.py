@@ -14,10 +14,10 @@ def generate(n):
     fake = Faker()
 
     d = OrderedDict()
-    d['name'] = []
-    d['type'] = []
-    d['prog'] = []
-    d['cip'] = []
+    d['provider_name'] = []
+    d['provider_type'] = []
+    d['program_type'] = []
+    d['program_cip'] = []
     d['reporting_period'] = []
     d['all_served'] = []
     d['all_exited'] = []
@@ -53,11 +53,11 @@ def generate(n):
             # And a random number of reporting periods for the given program:
             for year in np.unique(np.random.choice(range(2014,2017), 3)):
                 total = total+1
-                d['name'].append(name)
-                d['type'].append(typ)
+                d['provider_name'].append(name)
+                d['provider_type'].append(typ)
+                d['program_type'].append(prog)
+                d['program_cip'].append(cip)
                 d['reporting_period'].append(year)
-                d['prog'].append(prog)
-                d['cip'].append(cip)
 
                 d['all_served'].append(int(random.expovariate(1/100)+1))
                 d['all_exited'].append(int(d['all_served'][-1] * (random.random()+1)/2))
