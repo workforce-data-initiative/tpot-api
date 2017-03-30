@@ -1,5 +1,5 @@
 from flask import Flask
-from etp_api.apis import api
+from .apiv0 import blueprint as apiv0
 
 app = Flask(__name__)
-api.init_app(app)
+app.register_blueprint(apiv0)

@@ -1,7 +1,7 @@
 from flask_restplus import Namespace, Resource, fields
 from etp_api.database import model
 
-api = Namespace('provider', description='List all providers')
+api = Namespace('provider', description='Providers related operations')
 
 provider = api.model('Provider', {
     'id': fields.String(required=True, description='The provider identifier'),
@@ -14,7 +14,10 @@ class ProviderList(Resource):
     @api.doc('list_providers')
     @api.marshal_list_with(provider)
     def get(self):
-        '''List all providers'''
+        '''
+        List all providers
+        Get all training providers.
+        '''
         return model.get_all_providers()
 
 @api.route('/<id>')

@@ -1,6 +1,6 @@
 from flask_restplus import Namespace, Resource, fields
 
-api = Namespace('program', description='List all programs')
+api = Namespace('program', description='Program related operations')
 
 program = api.model('Program', {
     'provider_id': fields.String(required=True, description='The provider identifier'),
