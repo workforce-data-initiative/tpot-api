@@ -15,6 +15,7 @@ def generate(n):
 
     d = OrderedDict()
     d['provider_name'] = []
+    d['provider_id'] = []
     d['provider_type'] = []
     d['program_type'] = []
     d['program_cip'] = []
