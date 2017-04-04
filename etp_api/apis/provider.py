@@ -29,7 +29,7 @@ class Provider(Resource):
     @api.marshal_with(provider)
     def get(self, id):
         '''Fetch a provider given its identifier'''
-        try:
+        # try:
             return model.get_provider(id)
-        except:
-            api.abort(404)
+        # except:
+        #     api.abort(404)
