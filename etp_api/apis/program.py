@@ -18,6 +18,6 @@ class Program(Resource):
     def get(self, provider_id):
         '''Fetch all programs given the provider's identifier'''
         try:
-            return model.get_programs_for_provider(provider_id):
+            return model.get_programs_for_provider(provider_id)
         except:
             api.abort(404)
