@@ -26,7 +26,7 @@ class ProviderList(Resource):
 @api.response(404, 'Provider not found')
 class Provider(Resource):
     @api.doc('get provider')
-    @api.marshal_with(provider)
+    @api.marshal_list_with(provider)
     def get(self, id):
         '''Fetch a provider given its identifier'''
         # try:
