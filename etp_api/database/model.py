@@ -1,8 +1,3 @@
-PROVIDERS = [
-        {'id': '112', 'name': 'Provider 1'},
-        {'id': '113', 'name': 'Provider 2'},
-        {'id': '114', 'name': 'Provider 3'}
-        ]
 
 
 def get_all_providers():
