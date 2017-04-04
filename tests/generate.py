@@ -42,9 +42,12 @@ def generate(n):
     # TODO: Total # of WIOA participants served disaggregated by barriers to employment 
     
     total = 0
+    id = 1
     while total < n:
         name = (fake.last_name() + " " + 
                 np.random.choice(["School","Institute","College","University"]))
+        provider_id = id
+        id += 1
         typ = random.randint(0,8)
         # Generate a random number of programs for the school
         for _ in range(int(random.expovariate(1/10)+1)):
@@ -54,6 +57,7 @@ def generate(n):
             for year in np.unique(np.random.choice(range(2014,2017), 3)):
                 total = total+1
                 d['provider_name'].append(name)
+                d['provider_id'].append(id)
                 d['provider_type'].append(typ)
                 d['program_type'].append(prog)
                 d['program_cip'].append(cip)
