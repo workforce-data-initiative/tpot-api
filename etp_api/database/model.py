@@ -1,15 +1,23 @@
+import itertools
+from etp_api import db
 
 
 def get_all_providers():
-    return PROVIDERS
+    r = db.engine.execute("SELECT DISTINCT provider_id FROM scorecard")
+    vals = r.fetchall()
+    return list(itertools.chain(*vals))
 
 def get_provider(id):
-    for p in PROVIDERS:
-        if p['id'] == id:
-            return p
+    r = db.engine.execute("SELECT DISTINCT provider_id, provider_name, provider_type FROM scorecard WHERE provider_id=%d" % provider_id)
+    vals = r.fetchall()
+    return list(map(dict, vals))
 
 def get_programs_for_provider(provider_id):
-    return [11,12,13,14,15]
+    r = db.engine.execute("SELECT DISTINCT program_cip FROM scorecard WHERE provider_id=%d" % provider_id)
+    vals = r.fetchall()
+    return list(itertools.chain(*vals))
 
 def get_outcomes_for_program(provider_id, program_id):
-    return {'individuals': 123, 'grad_rate': .8, 'median_income': 32000}
+    r = db.engine.execute("* FROM scorecard WHERE provider_id=%d and program_cip=program_id" % (provider_id, program_id))
+    vals = r.fetchall()
+    return list(map(dict, vals))
