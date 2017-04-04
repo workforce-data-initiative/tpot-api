@@ -30,6 +30,6 @@ class Provider(Resource):
     def get(self, id):
         '''Fetch a provider given its identifier'''
         # try:
-            return model.get_provider(id)
+        return model.get_provider(id)
         # except:
         #     api.abort(404)
