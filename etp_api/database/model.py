@@ -2,9 +2,9 @@ import itertools
 from etp_api import db
 
 def get_all_providers():
-    r = db.engine.execute("SELECT DISTINCT provider_id FROM scorecard")
+    r = db.engine.execute("SELECT DISTINCT provider_id, provider_name FROM scorecard")
     vals = r.fetchall()
-    return list(itertools.chain(*vals))
+    return list(map(dict, vals))
 
 def get_provider(id):
     r = db.engine.execute("SELECT DISTINCT provider_id, provider_name, provider_type FROM scorecard WHERE provider_id=%d" % provider_id)

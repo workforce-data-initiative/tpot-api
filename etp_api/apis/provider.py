@@ -4,8 +4,8 @@ from etp_api.database import model
 api = Namespace('provider', description='Providers related operations')
 
 provider = api.model('Provider', {
-    'id': fields.String(required=True, description='The provider identifier'),
-    'name': fields.String(required=True, description='The provider name'),
+    'provider_id': fields.String(required=True, description='The provider identifier'),
+    'provider_name': fields.String(required=True, description='The provider name'),
     })
 
 
