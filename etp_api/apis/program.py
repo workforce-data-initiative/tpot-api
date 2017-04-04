@@ -4,14 +4,14 @@ from etp_api.database import model
 api = Namespace('program', description='Program related operations')
 
 program = api.model('Program', {
-    'provider_id': fields.String(required=True, description='The provider identifier'),
-    'name': fields.String(required=True, description='The program name'),
+    'program_cip': fields.String(required=True, description='The program CIP code'),
+    'program_type': fields.String(required=True, description='The program type'),
     })
 
 
 @api.route('/<provider_id>')
 @api.param('provider_id', 'The provider identifier')
-@api.response(404, 'Provider not found')
+@api.response(404, 'Program not found')
 class Program(Resource):
     @api.doc('get all programs from the provider')
     @api.marshal_list_with(program)
