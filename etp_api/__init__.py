@@ -9,3 +9,7 @@ db = SQLAlchemy(app)
 
 from .apiv0 import blueprint as apiv0
 app.register_blueprint(apiv0)
+
+@app.route('/')
+def redirect():
+    return redirect("/api/v0", code=302)
