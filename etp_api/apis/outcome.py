@@ -1,4 +1,3 @@
-from flask import jsonify
 from flask_restplus import Namespace, Resource, fields
 from etp_api.database import model
 
@@ -13,6 +12,6 @@ class Program(Resource):
     def get(self, provider_id, program_id):
         '''Fetch all programs given the provider's identifier'''
         try:
-            return jsonify(model.get_outcomes_for_program(provider_id, program_id))
+            return model.get_outcomes_for_program(provider_id, program_id)
         except:
             api.abort(404)
