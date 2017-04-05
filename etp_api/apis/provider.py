@@ -21,7 +21,7 @@ class ProviderList(Resource):
         '''
         return model.get_all_providers()
 
-@api.route('/<id>')
+@api.route('/<int:id>')
 @api.param('id', 'The provider identifier')
 @api.response(404, 'Provider not found')
 class Provider(Resource):
