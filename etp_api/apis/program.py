@@ -9,7 +9,7 @@ program = api.model('Program', {
     })
 
 
-@api.route('/<provider_id>')
+@api.route('/<int:provider_id>')
 @api.param('provider_id', 'The provider identifier')
 @api.response(404, 'Program not found')
 class Program(Resource):
