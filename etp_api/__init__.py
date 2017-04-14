@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask.ext.heroku import Heroku
 
@@ -11,5 +11,5 @@ from .apiv0 import blueprint as apiv0
 app.register_blueprint(apiv0)
 
 @app.route('/')
-def redirect():
-    return redirect("/api/v0", code=302)
+def index():
+    return redirect(url_for('api.doc'), code=302)

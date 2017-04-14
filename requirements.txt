@@ -4,3 +4,6 @@ flask-restplus
 flask-sqlalchemy
 flask-heroku
 psycopg2
+numpy
+pandas
+faker
