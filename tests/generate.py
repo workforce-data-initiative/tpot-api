@@ -90,4 +90,4 @@ def generate(n):
 
 if __name__ == '__main__':
     df = generate(200)
-    df.to_csv('data.csv', index=False)
+    df.to_csv('example_data.csv', index=False)

@@ -4,7 +4,7 @@ import subprocess
 
 from sqlalchemy import create_engine
 
-CSVPATH = 'tests/data.csv'
+CSVPATH = 'tests/example_data.csv'
 
 command = 'heroku config:get DATABASE_URL'
 heroku_pg = subprocess.check_output(command.split()).decode('utf-8')
