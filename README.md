@@ -3,14 +3,22 @@ etp-api
 
 **etp-api** is a framework for a web service that provides an API for aggregated ETP outcomes. The default setting for the server is Heroku with Heroku Postgres database. The goal is for every institution to have an easy deployment for their ETP outcomes that could be used in more sophisticated tools, analyses and downstream applications by developers.
 
-Quick Start
+Quick Deployment
+------------
+
+One-click deploy
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+
+Quick Start for Developers
 -----------
 
 ### 1. Prerequisites
 
 - Have a [Heroku account](https://dashboard.heroku.com/).
 - Have [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed.
-- Have a `data.csv` file in `/deploy` directory that matches the schema as `example_data.csv` in `/test` directory. 
+- Have a `data.csv` file in `/deploy` directory that matches the schema as `example_data.csv` in `/test` directory.
 
 
 
@@ -29,7 +37,7 @@ cd etp-api
 **etp-api** depends on python3, so create a virtual environment using a python3 executable. Then activate the virtualenv.
 
 ```bash
-virtualenv venv -p /usr/bin/python3  
+virtualenv venv -p /usr/bin/python3
 source venv/bin/activate
 ```
 ### 4. Python requirements
@@ -37,7 +45,7 @@ source venv/bin/activate
 Install requirements.
 
 ```bash
-pip install requirements.txt 
+pip install requirements.txt
 ```
 
 ### 5. Run and deploy
