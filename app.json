@@ -1,0 +1,17 @@
+{
+  "name": "ETP-API",
+  "description": "A web service that provides an API for aggregated ETP outcomes",
+  "repository": "https://github.com/workforce-data-initiative/etp-api",
+  "keywords": ["python", "flask", "swagger"],
+  "addons": [
+    {
+        "plan": "heroku-postgresql",
+        "options": {
+            "version": "9.5"
+        }
+    }
+    ],
+ "scripts": {
+    "postdeploy": "python deploy/csv2db_heroku.py"
+ }
+}

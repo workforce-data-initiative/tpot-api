@@ -5,8 +5,15 @@ etp-api
 
 [live demo](http://etp-api.dataatwork.org/api/v0)
 
-Quick Start
------------
+Quick Deployment
+------------
+
+One-click deploy
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+
+Quick Start for Developers
 
 ### 1. Prerequisites
 
