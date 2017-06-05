@@ -1,4 +1,4 @@
-pkg_origin=gitgik
+pkg_origin=brighthive
 pkg_name=etp-api
 pkg_version=0.1.0
 pkg_maintainer="jee@brighthive.io, stanley@brighthive.io, aretha@brighthive.io"
@@ -23,7 +23,7 @@ do_unpack() {
   PROJECT_ROOT="${PLAN_CONTEXT}/.."
 
   mkdir -p $pkg_prefix
-  build_line "Copying project data /src to $pkg_prefix/ ..."
+  build_line "Copying project data /src to $pkg_prefix ..."
   cp -r $PROJECT_ROOT/etp_api $pkg_prefix/
   cp -r $PROJECT_ROOT/tests $pkg_prefix/
   cp -r $PROJECT_ROOT/*.py $pkg_prefix/
