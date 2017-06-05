@@ -46,7 +46,7 @@ source venv/bin/activate
 Install requirements.
 
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 5. Run and deploy
