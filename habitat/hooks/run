@@ -6,6 +6,5 @@ exec 2>&1
 cd {{pkg.svc_var_path}}
 source venv/bin/activate
 
-# start the server
-build_line "Serving the wsgi with gunicorn ..."
-gunicorn wsgi
+# start the server using gunicorn
+gunicorn wsgi --bind 0.0.0.0:8080

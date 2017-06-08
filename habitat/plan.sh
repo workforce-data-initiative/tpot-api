@@ -41,8 +41,8 @@ do_install() {
   build_line "Creating a virtual environment ..."
   virtualenv venv -p python3
   source venv/bin/activate
-  build_line "Installing requirements from requirements.txt ..."
+  build_line "Installing psycopg2 without binaries ..."
   pip install --no-binary :all: psycopg2
+  build_line "Installing requirements from requirements.txt ..."
   pip install -r requirements.txt
-  build_line "Done installing requirements ..."
 }
