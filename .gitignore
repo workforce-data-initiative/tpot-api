@@ -82,3 +82,5 @@ celerybeat-schedule
 venv/
 ENV/
 
+# habitat packages
+results/

@@ -1,7 +1,7 @@
 from etp_api import app
 import os
 
-port = os.environ.get('PORT', 5002)
+port = os.environ.get('PORT', 8080)
 try:
     port = int(port)
     app.run(debug=True, host='localhost', port=port)

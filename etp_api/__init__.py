@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask.ext.heroku import Heroku
 
 app = Flask(__name__)
+# set this deprecated variable to false to reduce overhead
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 heroku = Heroku(app)
 db = SQLAlchemy(app)

@@ -1,0 +1,10 @@
+#!/bin/sh -xe
+
+# Allows to see errors as they occur
+exec 2>&1
+
+cd {{pkg.svc_var_path}}
+source venv/bin/activate
+
+# start the server using gunicorn
+gunicorn wsgi --bind 0.0.0.0:8080
