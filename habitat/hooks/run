@@ -1,4 +1,4 @@
-#!/bin/sh -xe
+#!/bin/bash -xe
 
 # Allows to see errors as they occur
 exec 2>&1
