@@ -98,6 +98,13 @@ Let's go ahead and build the etp-api!
 When finished building, you should see this message
 `etp-api: I love it when a plan.sh comes together.`
 
+The build bundles up the etp-api source code, dependencies, runtime and other server configurations into a habitat .hart package. This package can now be exported to docker.
+
+In linux environments, the package can then be run directly using this simple command:
+```bash
+$ hab start brighthive/etp-api
+```
+
 #### Exporting to docker
 You can export the created .hart package into a docker container using the `hab pkg export docker` command as follows:
 
