@@ -95,6 +95,23 @@ Let's go ahead and build the etp-api!
 ```bash
 [5][default:/src:0]# build
 ```
+When finished building, you should see this message
+`etp-api: I love it when a plan.sh comes together.`
+
+#### Exporting to docker
+You can export the created .hart package into a docker container using the `hab pkg export docker` command as follows:
+
+```bash
+[5][default:/src:0]# hab pkg export docker brighthive/etp-api
+```
+
+#### All systems go!
+After exiting the studio by typing `exit`, run the docker container as follows:
+
+```bash
+$ docker run -it -p 8080:8080 brighthive/etp-api
+```
+We're cooking with gas! 🔥 🚀
 
 License
 -------
