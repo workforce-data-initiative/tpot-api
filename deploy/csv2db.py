@@ -1,10 +1,13 @@
 import json
 import pandas as pd
 import subprocess
+import os
 
 from sqlalchemy import create_engine
 
-CSVPATH = 'tests/example_data.csv'
+configobj = json.load(open("config/config.json"))
+
+CSVPATH = configobj['dbpath']
 
 command = 'heroku config:get DATABASE_URL'
 heroku_pg = subprocess.check_output(command.split()).decode('utf-8')
