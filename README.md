@@ -63,7 +63,13 @@ Run the `deploy.sh` and enter the right information for Heroku username and pass
 
 #### Installing habitat
 To install habitat, simply download the binary.
-* Unzip `hab` into `/usr/local/bin`
+* Unzip `hab` into `/usr/local/bin`. To do this:
+    * Unzip the downloaded folder
+    * Navigate to the unzipped folder by running `cd` followed by the file location
+        For example: `cd /Users/Rachel/Downloads/hab-0.28.0-20170729010833-x86_64-darwin`
+        (If you're using a Mac, you can insert the location by dragging the unzipped file into the terminal)
+    * Run `cp hab /usr/local/bin`
+        If you receive an error saying Permission Denied, run `sudo cp hab /usr/local/bin`
 * Run `sudo chmod a+x hab` to make it executable.
 * You'll also need docker installed if on Mac. Find docker [here](https://store.docker.com/editions/community/docker-ce-desktop-mac)
 * To confirm if habitat is installed, re-open your terminal and type `hab` then press enter. You should see a list menu with all the habitat options available. Moving on swiftly!
