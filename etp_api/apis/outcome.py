@@ -3,6 +3,7 @@ from etp_api.database import model
 
 api = Namespace('outcome', description='ETP outcome scorecards')
 
+
 @api.route('/<int:provider_id>/<int:program_id>')
 @api.param('provider_id', 'The provider identifier')
 @api.param('program_id', 'The program CIP code')

@@ -4,8 +4,10 @@ from etp_api.database import model
 api = Namespace('program', description='Program related operations')
 
 program = api.model('Program', {
-    'program_cip': fields.String(required=True, description='The program CIP code'),
-    'program_type': fields.String(required=True, description='The program type'),
+    'program_cip': fields.String(
+        required=True, description='The program CIP code'),
+    'program_type': fields.String(
+        required=True, description='The program type'),
     })
 
 
