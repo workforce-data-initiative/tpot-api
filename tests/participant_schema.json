@@ -1,0 +1,74 @@
+{
+    "fields": [
+      {
+        "name": "participant_id",
+        "title": "A participant Identifier",
+        "type": "integer",
+        "format": "default",
+        "description": ""
+      },
+      {
+        "name": "program_name",
+        "title": "A program name",
+        "type": "string",
+        "format": "default",
+        "description": ""
+      },
+      {
+        "name": "program_id",
+        "title": "",
+        "type": "integer",
+        "format": "default",
+        "description": ""
+      },
+      {
+        "name": "program_potential_outcome",
+        "title": "",
+        "type": "integer",
+        "format": "default",
+        "description": ""
+      },
+      {
+        "name": "program_CIP",
+        "title": "",
+        "type": "integer",
+        "format": "default",
+        "description": ""
+      },
+      {
+        "name": "wioa_participant",
+        "title": "",
+        "type": "boolean",
+        "format": "default",
+        "description": ""
+      },
+      {
+        "name": "date_of_entry",
+        "title": "",
+        "type": "date",
+        "format": "any",
+        "description": ""
+      },
+      {
+        "name": "date_of_exit",
+        "title": "",
+        "type": "date",
+        "format": "any",
+        "description": ""
+      },
+      {
+        "name": "type_of_exit",
+        "title": "",
+        "type": "string",
+        "format": "default",
+        "description": ""
+      },
+      {
+        "name": "obtained_credential",
+        "title": "",
+        "type": "boolean",
+        "format": "default",
+        "description": ""
+      }
+    ]
+}

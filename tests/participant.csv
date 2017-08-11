@@ -1,0 +1,5 @@
+participant_id,program_name,program_id,program_potential_outcome,program_CIP,wioa_participant,date_of_entry,date_of_exit,type_of_exit,obtained_credential
+1234567,Basic welding,4675,1,4675,yes,1/2/2016,1/6/2016,complete,yes
+2345678,Advanced CAD,6547,2,6547,no,2/3/2016,2/7/2016,withdraw,yes
+3456789,Web development,4653,3,4653,no,3/4/2016,3/8/2016,transfer,no
+4567890,Automotive repair,5423,4,5423,yes,4/5/2016,4/9/2016,other,no
