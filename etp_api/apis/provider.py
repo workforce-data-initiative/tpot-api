@@ -4,9 +4,12 @@ from etp_api.database import model
 api = Namespace('provider', description='Providers related operations')
 
 provider = api.model('Provider', {
-    'provider_id': fields.String(required=True, description='The provider identifier'),
-    'provider_name': fields.String(required=True, description='The provider name'),
-    'provider_type': fields.String(required=True, description='The provider type'),
+    'provider_id': fields.String(
+        required=True, description='The provider identifier'),
+    'provider_name': fields.String(
+        required=True, description='The provider name'),
+    'provider_type': fields.String(
+        required=True, description='The provider type'),
     })
 
 
@@ -20,6 +23,7 @@ class ProviderList(Resource):
         Get all training providers.
         '''
         return model.get_all_providers()
+
 
 @api.route('/<int:id>')
 @api.param('id', 'The provider identifier')

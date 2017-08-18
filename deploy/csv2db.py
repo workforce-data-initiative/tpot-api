@@ -16,4 +16,3 @@ engine = create_engine(heroku_pg)
 
 df = pd.read_csv(CSVPATH)
 df.to_sql(name='scorecard', index=False, if_exists='replace', con=engine)
-
