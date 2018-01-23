@@ -8,11 +8,11 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-basePath: "/api/v0"
+# basePath: "/api/v1"
 schemes:
 - "https"
 paths:
-    /provider:
+  /provider:
     get:
       tags:
       - "provider"
@@ -34,7 +34,7 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/Provider"
-    /provider/{provider_id}:
+  /provider/{provider_id}:
     get:
       tags:
       - "provider"
@@ -64,7 +64,7 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Provider not found"
-    /program/{provider_id}:
+  /program/{provider_id}:
     get:
       tags:
       - "program"
@@ -94,7 +94,7 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Program not found"
-    /outcome/{provider_id}/{program_id}:
+  /outcome/{provider_id}/{program_id}:
     get:
       tags:
       - "outcome"
@@ -130,7 +130,7 @@ definitions:
   Provider:
     type: "object"
     required:
-    - "name"
+    - "provider_name"
     properties:
       provider_id:
         type: "integer"
@@ -144,7 +144,7 @@ definitions:
   Program:
     type: "object"
     required:
-    - "name"
+    - "program_type"
     properties:
       program_cip:
         type: "string"
@@ -152,4 +152,5 @@ definitions:
         type: "string"
     xml:
       name: "Program"
+
 
