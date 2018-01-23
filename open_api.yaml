@@ -8,7 +8,7 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-basePath: "/api"
+basePath: "/api/v0"
 schemes:
 - "https"
 paths:
