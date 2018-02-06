@@ -87,3 +87,6 @@ results/
 
 # Editor files
 .vscode
+
+# MacOS file
+.DS_Store
