@@ -7,4 +7,4 @@ flask-heroku
 gunicorn==19.7.0
 numpy
 pandas
-psycopg2
+psycopg2-binary

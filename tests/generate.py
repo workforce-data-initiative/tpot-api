@@ -113,6 +113,7 @@ def generate(n):
                     random.randint(200, 20000))
     return pd.DataFrame(d)
 
+
 if __name__ == '__main__':
     df = generate(200)
     df.to_csv('example_data.csv', index=False)
