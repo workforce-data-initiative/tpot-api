@@ -5,6 +5,13 @@ ETP-API
 
 [live demo](http://etp-api.dataatwork.org/api/v0)
 
+Quick run
+------------
+
+- Have `docker` installed
+- Run `docker-compose up` and get to [localhost:8080](http://localhost:8080/)
+- To stop this server, enter `Ctrl+C`
+
 Quick Deployment
 ------------
 
