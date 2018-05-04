@@ -1,9 +1,10 @@
+abacus-tpot
+faker
 Flask==0.10.1
-gunicorn==19.7.0
 flask-restplus
 flask-sqlalchemy
 flask-heroku
-psycopg2
+gunicorn==19.7.0
 numpy
 pandas
-faker
+psycopg2
