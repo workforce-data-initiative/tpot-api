@@ -1,9 +1,18 @@
 ETP-API
 =======
 
+[![Coverage Status](https://coveralls.io/repos/github/workforce-data-initiative/etp-api/badge.svg?branch=chore/create-tests)](https://coveralls.io/github/workforce-data-initiative/etp-api?branch=chore/create-tests)
+
 **etp-api** is a framework for a web service that provides an API for aggregated ETP outcomes. The default setting for the server is Heroku with Heroku Postgres database. The goal is for every institution to have an easy deployment for their ETP outcomes that could be used in more sophisticated tools, analyses and downstream applications by developers.
 
 [live demo](http://etp-api.dataatwork.org/api/v0)
+
+Quick run
+------------
+
+- Have `docker` installed
+- Run `docker-compose up` and get to [localhost:8080](http://localhost:8080/)
+- To stop this server, enter `Ctrl+C`
 
 Quick Deployment
 ------------
@@ -49,7 +58,13 @@ Install requirements.
 pip install -r requirements.txt
 ```
 
-### 5. Run and deploy
+### 5. Running tests
+
+```bash
+nosetests --with-coverage -v --cover-package=etp_api
+```
+
+### 6. Run and deploy
 
 Run the `deploy.sh` and enter the right information for Heroku username and password. The **etp-api** server will be deployed on Heroku.
 
@@ -57,7 +72,7 @@ Run the `deploy.sh` and enter the right information for Heroku username and pass
 ./deploy.sh
 ```
 
-### 6. Automating deployment using habitat
+### 7. Automating deployment using habitat
 
 [Habitat](https://www.habitat.sh/) helps package an app or service into containers that can be run in any infrastructure, without committing to a specific container format or platform.
 
