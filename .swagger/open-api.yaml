@@ -1,765 +1,154 @@
----
 swagger: "2.0"
 info:
-  description: This is the OpenAPI spec for the Program Registry API. For this service, you can use the api key `special-key` to test the authorization filters.
-  version: 1.0.0
-  title: Program Registry
+  description: "This is the OpenAPI spec for Training Providers and Programs Outcomes API."
+  version: "1.0.0"
+  title: "OUTCOMES-API"
   contact:
-    email: engineering@brighthive.io
+    email: "engineering@brighthive.io"
   license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-host: registry.swagger.io
-basePath: /api
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+basePath: "/api/v0"
 schemes:
-- https
+- "https"
 paths:
-  /organizations:
+  /provider:
     get:
       tags:
-      - organization
-      summary: Find all organizations
-      description: Return a list of all organizations
-      operationId: app.organization.OrganizationView
+      - "provider"
+      summary: "Get all training providers"
+      description: "Return a list of all training providers"
+      operationId: apis.provider.ProviderList
       produces:
-      - application/json
+      - "application/json"
       parameters:
-      - name: name
-        in: query
-        description: The name of the organization
+      - in: "header"
+        name: "X-Fields"
         required: false
-        type: string
+        description: "An optional fields mask"
+        type: "string"
       responses:
         200:
-          description: successful operation
+          description: "successful operation"
           schema:
-            type: array
+            type: "array"
             items:
-              $ref: '#/definitions/Organization'
-    post:
-      tags:
-      - organization
-      summary: Add a new organization to the registry
-      description: ""
-      operationId: app.organization.OrganizationView.post
-      consumes:
-      - application/json
-      - multipart/form-data
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: Organization object that needs to be added to the registry
-        required: true
-        schema:
-          $ref: '#/definitions/Organization'
-      responses:
-        201:
-          description: created
-          schema:
-            $ref: '#/definitions/Organization'
-        405:
-          description: Invalid input
-  /organizations/{organizationId}:
+              $ref: "#/definitions/Provider"
+  /provider/{provider_id}:
     get:
       tags:
-      - organization
-      summary: Find organization by ID
-      description: Returns a single organization
-      operationId: app.organization.OrganizationView.get
+      - "provider"
+      summary: "Find a provider by ID"
+      description: "Returns a single provider"
+      operationId: apis.provider.Provider
       produces:
-      - application/json
+      - "application/json"
       parameters:
-      - name: organizationId
+      - name: provider_id
         in: path
-        description: ID of organization to return
+        description: "ID of provider to return"
         required: true
-        type: integer
-        format: int64
-      responses:
-        200:
-          description: successful operation
-          schema:
-            $ref: '#/definitions/Organization'
-        400:
-          description: Invalid ID supplied
-        404:
-          description: Organization not found
-      security:
-      - api_key: []
-    put:
-      tags:
-      - organization
-      summary: Update an existing organization
-      description: Makes a PUT request to the resource to update an existing org
-      operationId: app.organization.OrganizationView.put
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        description: Numeric ID of organization to update
-        required: true
-        type: integer
-        format: int64
-      - in: body
-        name: body
-        description: Updated organization object
-        required: true
-        schema:
-          $ref: '#/definitions/Organization'
-      responses:
-        400:
-          description: Invalid ID supplied
-        404:
-          description: Organization not found
-        405:
-          description: Validation exception
-    delete:
-      tags:
-      - organization
-      summary: Deletes an organization
-      description: ""
-      operationId: app.organization.OrganizationView.delete
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        description: Numeric ID of organization to delete
-        required: true
-        type: integer
-        format: int64
-      responses:
-        400:
-          description: Invalid ID supplied
-        404:
-          description: Organization not found
-  /organizations/{organizationId}/programs:
-    get:
-      tags:
-      - organization
-      summary: Find all programs
-      description: Return a list of all the existing programs
-      operationId: app.programs.ProgramView
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        required: true
-        type: integer
-        format: int64
-      - name: name
-        in: query
-        description: The name of the program to search
-        required: false
-        type: string
-      responses:
-        200:
-          description: successful operation
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Program'
-    post:
-      tags:
-      - program
-      summary: Add a new program to the registry
-      description: ""
-      operationId: app.programs.ProgramView.post
-      consumes:
-      - application/json
-      - multipart/form-data
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        required: true
-        type: integer
-        format: int64
-      - in: body
-        name: body
-        description: Program object that needs to be added to the registry
-        required: true
-        schema:
-          $ref: '#/definitions/Program'
-      responses:
-        200:
-          description: successful operation
-          schema:
-            $ref: '#/definitions/Program'
-        405:
-          description: Invalid input
-  /organization/{organizationId}/programs/{programId}:
-    get:
-      tags:
-      - program
-      summary: Get a program by ID
-      description: ""
-      operationId: app.programs.ProgramView.get
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        required: true
-        type: integer
-        format: int64
-      - name: programId
-        in: path
-        description: Numeric ID of program to update
-        required: true
-        type: integer
-        format: int64
-      responses:
-        200:
-          description: successful operation
-          schema:
-            $ref: '#/definitions/Program'
-      security:
-      - api_key: []
-    put:
-      tags:
-      - program
-      summary: Update an existing program
-      description: Makes a PUT request to the resource to update an existing program
-      operationId: app.programs.ProgramView.put
-      consumes:
-      - application/json
-      - multipart/form-data
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        description: Numeric ID of organization that owns the program
-        required: true
-        type: integer
-        format: int64
-      - name: programId
-        in: path
-        description: Numeric ID of program to update
-        required: true
-        type: integer
-        format: int64
-      - in: body
-        name: body
-        description: Updated program object
-        required: true
-        schema:
-          $ref: '#/definitions/Program'
-      responses:
-        400:
-          description: Invalid ID supplied
-        404:
-          description: Program not found
-        405:
-          description: Validation exception
-    delete:
-      tags:
-      - program
-      summary: Deletes a program
-      description: Delete a program given its ID
-      operationId: app.programs.ProgramView.delete
-      produces:
-      - application/json
-      parameters:
-      - name: api_key
+        type: "integer"
+        format: "int64"
+      - name: "X-Fields"
         in: header
         required: false
-        type: string
-      - name: organizationId
-        in: path
-        description: Numeric ID of organization that owns the program
-        required: true
-        type: integer
-        format: int64
-      - name: programId
-        in: path
-        description: Numeric ID of program to delete
-        required: true
-        type: integer
-        format: int64
-      responses:
-        202:
-          description: Ok
-        400:
-          description: Invalid ID supplied
-        404:
-          description: Program not found
-  /organization/{organizationId}/programs/{programId}/services:
-    get:
-      tags:
-      - service
-      summary: Returns all services
-      description: Returns an list of existing services under a given org
-      operationId: app.services.ServiceView
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        required: true
-        type: integer
-        format: int64
-      - name: programId
-        in: path
-        description: ID of program for the service
-        required: true
-        type: integer
-        format: int64
-      - name: name
-        in: query
-        description: The name of the services to search
-        required: false
-        type: string
+        description: "An optional fields mask"
+        type: "string"
       responses:
         200:
-          description: successful operation
+          description: "successful operation"
           schema:
-            $ref: '#/definitions/Service'
-      security:
-      - api_key: []
-    post:
-      tags:
-      - service
-      summary: Add a new service to the registry
-      description: ""
-      operationId: app.services.ServiceView.post
-      consumes:
-      - application/json
-      - multipart/form-data
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        required: true
-        type: integer
-        format: int64
-      - name: programId
-        in: path
-        description: ID of program to which the service belongs
-        required: true
-        type: integer
-        format: int64
-      - in: body
-        name: body
-        description: Service object that needs to be added to the registry
-        required: true
-        schema:
-          $ref: '#/definitions/Service'
-      responses:
-        201:
-          description: created
-          schema:
-            $ref: '#/definitions/Service'
-        405:
-          description: Invalid input
-  /organizations/{organizationId}/programs/{programId}/services/{serviceId}:
+            $ref: "#/definitions/Provider"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Provider not found"
+  /program/{provider_id}:
     get:
       tags:
-      - service
-      summary: Get a specific service by ID
-      description: ""
-      operationId: app.services.ServiceView.get
+      - "program"
+      summary: "Get all programs given a provider ID"
+      description: "Returns all programs given the provider's identifier"
+      operationId: apis.program.Program 
       produces:
-      - application/json
+      - "application/json"
       parameters:
-      - name: organizationId
+      - name: provider_id
         in: path
-        description: Numeric ID of organization
+        description: "ID of provider to which the programs belong"
         required: true
-        type: integer
-        format: int64
-      - name: programId
-        in: path
-        description: Numeric ID of program to which the service belongs
-        required: true
-        type: integer
-        format: int64
-      - name: serviceId
-        in: path
-        description: Numeric ID of the service to get
-        required: true
-        type: integer
-        format: int64
-      responses:
-        200:
-          description: successful operation
-          schema:
-            $ref: '#/definitions/Service'
-        400:
-          description: Invalid service request
-    put:
-      tags:
-      - service
-      summary: Update an existing service
-      description: Makes a PUT request to the resource to update an existing service
-      operationId: app.services.ServiceView.put
-      consumes:
-      - application/json
-      - multipart/form-data
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        description: Numeric ID of organization that owns the service
-        required: true
-        type: integer
-        format: int64
-      - name: programId
-        in: path
-        description: Numeric ID of program to which the service belongs
-        required: true
-        type: integer
-        format: int64
-      - name: serviceId
-        in: path
-        description: Numeric ID of the service to update
-        required: true
-        type: integer
-        format: int64
-      - in: body
-        name: body
-        description: Updated service object
-        required: true
-        schema:
-          $ref: '#/definitions/Program'
-      responses:
-        400:
-          description: Invalid ID supplied
-        404:
-          description: Program not found
-        405:
-          description: Validation exception
-    delete:
-      tags:
-      - service
-      summary: Deletes a service
-      description: Delete a service given its ID
-      operationId: app.services.ServiceView.delete
-      produces:
-      - application/json
-      parameters:
-      - name: api_key
+        type: "integer"
+        format: "int64"
+      - name: "X-Fields"
         in: header
         required: false
-        type: string
-      - name: organizationId
-        in: path
-        description: Numeric ID of organization that owns the service
-        required: true
-        type: integer
-        format: int64
-      - name: programId
-        in: path
-        description: Numeric ID of program to which the service belongs
-        required: true
-        type: integer
-        format: int64
-      - name: serviceId
-        in: path
-        description: Numeric ID of the service to delete
-        required: true
-        type: integer
-        format: int64
-      responses:
-        202:
-          description: Ok
-        400:
-          description: Invalid ID supplied
-        404:
-          description: Service not found
-  /organizations/{organizationId}/locations:
-    get:
-      tags:
-      - service
-      summary: Returns all locations for an organization
-      description: Returns an list of existing locations under a given org
-      operationId: app.locations.LocationView
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        description: Numeric ID of organization that has locations
-        required: true
-        type: integer
-        format: int64
-      - name: name
-        in: query
-        description: The name of the location to search
-        required: false
-        type: string
+        description: "An optional fields mask"
+        type: "string"
       responses:
         200:
-          description: successful operation
+          description: "successful operation"
           schema:
-            $ref: '#/definitions/Location'
-      security:
-      - api_key: []
-    post:
-      tags:
-      - location
-      summary: Add a new locaton to the registry
-      description: ""
-      operationId: app.locations.LocationView.post
-      consumes:
-      - application/json
-      - multipart/form-data
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        required: true
-        type: integer
-        format: int64
-      - in: body
-        name: body
-        description: Location object that needs to be added to the registry
-        required: true
-        schema:
-          $ref: '#/definitions/Location'
-      responses:
-        201:
-          description: created
-          schema:
-            $ref: '#/definitions/Location'
+            $ref: "#/definitions/Program"
         400:
-          description: Bad request
-        405:
-          description: Invalid input
-  /organizations/{organizationId}/locations/{locationId}:
+          description: "Invalid ID supplied"
+        404:
+          description: "Program not found"
+  /outcome/{provider_id}/{program_id}:
     get:
       tags:
-      - location
-      summary: Find location by ID
-      description: Return a location object given it's ID
-      operationId: app.locations.LocationView.get
+      - "outcome"
+      summary: "Get all programs given the provider ID"
+      description: "Returns all programs given the provider's identifier"
+      operationId: apis.outcome.Program
       produces:
-      - application/json
+      - "application/json"
       parameters:
-      - name: organizationId
+      - name: provider_id
         in: path
+        description: "The provider identifier"
         required: true
-        type: integer
-        format: int64
-      - name: locationId
+        type: "integer"
+        format: "int64"
+      - name: program_id
         in: path
-        description: Numeric ID of location to get
+        description: "The program CIP code"
         required: true
-        type: integer
-        maximum: 10.0
-        minimum: 1.0
-        format: int64
+        type: "integer"
+        format: "int64"
       responses:
         200:
-          description: successful operation
+          description: "successful operation"
           schema:
-            $ref: '#/definitions/Location'
+            $ref: "#/definitions/Provider"
         400:
-          description: Invalid ID supplied
+          description: "Invalid ID supplied"
         404:
-          description: Location not found
-    put:
-      tags:
-      - location
-      summary: Update an existing location for an organization by ID
-      description: Makes a PUT request to the resource to update an existing organization location
-      operationId: app.locations.LocationView.put
-      consumes:
-      - application/json
-      - multipart/form-data
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        description: Numeric ID of organization that has a location
-        required: true
-        type: integer
-        format: int64
-      - name: locationId
-        in: path
-        description: Numeric ID of the location to update
-        required: true
-        type: integer
-        format: int64
-      - in: body
-        name: body
-        description: Updated location object
-        required: true
-        schema:
-          $ref: '#/definitions/Location'
-      responses:
-        400:
-          description: Invalid ID supplied
-        404:
-          description: Location not found
-        405:
-          description: Validation exception
-    delete:
-      tags:
-      - location
-      summary: Delete an existing location for an organization by ID
-      description: For valid response try integer IDs with positive integer value.         Negative or non-integer values will generate API errors
-      operationId: app.locations.LocationView.delete
-      produces:
-      - application/json
-      parameters:
-      - name: organizationId
-        in: path
-        description: Numeric ID of organization that has locations
-        required: true
-        type: integer
-        format: int64
-      - name: locationId
-        in: path
-        description: Numeric ID of the location to delete
-        required: true
-        type: integer
-        minimum: 1.0
-        format: int64
-      responses:
-        400:
-          description: Invalid ID supplied
-        404:
-          description: Location not found
-securityDefinitions:
-  api_key:
-    type: apiKey
-    name: api_key
-    in: header
+          description: "Program not found"
+
 definitions:
-  Organization:
-    type: object
+  Provider:
+    type: "object"
     required:
-    - name
+    - "provider_name"
     properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      description:
-        type: string
-      email:
-        type: string
-      url:
-        type: string
-      year_incorporated:
-        type: string
-    example:
-      name: name
-      description: description
-      year_incorporated: year_incorporated
-      id: 0
-      email: email
-      url: url
+      provider_id:
+        type: "integer"
+        format: "int64"
+      provider_name:
+        type: "string"
+      provider_type:
+        type: "string"
     xml:
-      name: Organization
+      name: "Provider"
   Program:
-    type: object
+    type: "object"
     required:
-    - name
-    - organization_id
+    - "program_type"
     properties:
-      id:
-        type: integer
-        format: int64
-      organization_id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      alternate_name:
-        type: string
-    example:
-      alternate_name: alternate_name
-      organization_id: 6
-      name: name
-      id: 0
+      program_cip:
+        type: "string"
+      program_type:
+        type: "string"
     xml:
-      name: Program
-  Service:
-    type: object
-    required:
-    - name
-    - organization_id
-    properties:
-      id:
-        type: integer
-        format: int64
-      organization_id:
-        type: integer
-        format: int64
-      program_id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      description:
-        type: string
-      email:
-        type: string
-      url:
-        type: string
-      status:
-        type: string
-      fees:
-        type: string
-    example:
-      fees: fees
-      organization_id: 6
-      program_id: 1
-      name: name
-      description: description
-      id: 0
-      email: email
-      url: url
-      status: status
-    xml:
-      name: Service
-  Location:
-    type: object
-    required:
-    - name
-    - organization_id
-    properties:
-      id:
-        type: integer
-        format: int64
-      organization_id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      alternate_name:
-        type: string
-      description:
-        type: string
-      transportation:
-        type: string
-      latitude:
-        type: string
-      longitude:
-        type: string
-    example:
-      alternate_name: alternate_name
-      organization_id: 6
-      latitude: latitude
-      name: name
-      description: description
-      id: 0
-      transportation: transportation
-      longitude: longitude
-    xml:
-      name: Location
+      name: "Program"
