@@ -1,161 +1,155 @@
----
 swagger: "2.0"
 info:
-  description: This is the OpenAPI spec for Training Providers and Programs Outcomes API.
-  version: 1.0.0
-  title: OUTCOMES-API
+  description: "This is the OpenAPI spec for Training Providers and Programs Outcomes API."
+  version: "1.0.0"
+  title: "OUTCOMES-API"
   contact:
-    email: engineering@brighthive.io
+    email: "engineering@brighthive.io"
   license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-basePath: /api/v0
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+basePath: "/api/v0"
+host: "tpot-etp-api.herokuapp.com"
 schemes:
-- https
+- "https"
 paths:
   /provider:
     get:
       tags:
-      - provider
-      summary: Get all training providers
-      description: Return a list of all training providers
+      - "provider"
+      summary: "Get all training providers"
+      description: "Return a list of all training providers"
       operationId: apis.provider.ProviderList
       produces:
-      - application/json
+      - "application/json"
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
+      - in: "header"
+        name: "X-Fields"
         required: false
-        type: string
+        description: "An optional fields mask"
+        type: "string"
       responses:
         200:
-          description: successful operation
+          description: "successful operation"
           schema:
-            type: array
+            type: "array"
             items:
-              $ref: '#/definitions/Provider'
+              $ref: "#/definitions/Provider"
   /provider/{provider_id}:
     get:
       tags:
-      - provider
-      summary: Find a provider by ID
-      description: Returns a single provider
+      - "provider"
+      summary: "Find a provider by ID"
+      description: "Returns a single provider"
       operationId: apis.provider.Provider
       produces:
-      - application/json
+      - "application/json"
       parameters:
       - name: provider_id
         in: path
-        description: ID of provider to return
+        description: "ID of provider to return"
         required: true
-        type: integer
-        format: int64
-      - name: X-Fields
+        type: "integer"
+        format: "int64"
+      - name: "X-Fields"
         in: header
-        description: An optional fields mask
         required: false
-        type: string
+        description: "An optional fields mask"
+        type: "string"
       responses:
         200:
-          description: successful operation
+          description: "successful operation"
           schema:
-            $ref: '#/definitions/Provider'
+            $ref: "#/definitions/Provider"
         400:
-          description: Invalid ID supplied
+          description: "Invalid ID supplied"
         404:
-          description: Provider not found
+          description: "Provider not found"
   /program/{provider_id}:
     get:
       tags:
-      - program
-      summary: Get all programs given a provider ID
-      description: Returns all programs given the provider's identifier
-      operationId: apis.program.Program
+      - "program"
+      summary: "Get all programs given a provider ID"
+      description: "Returns all programs given the provider's identifier"
+      operationId: apis.program.Program 
       produces:
-      - application/json
+      - "application/json"
       parameters:
       - name: provider_id
         in: path
-        description: ID of provider to which the programs belong
+        description: "ID of provider to which the programs belong"
         required: true
-        type: integer
-        format: int64
-      - name: X-Fields
+        type: "integer"
+        format: "int64"
+      - name: "X-Fields"
         in: header
-        description: An optional fields mask
         required: false
-        type: string
+        description: "An optional fields mask"
+        type: "string"
       responses:
         200:
-          description: successful operation
+          description: "successful operation"
           schema:
-            $ref: '#/definitions/Program'
+            $ref: "#/definitions/Program"
         400:
-          description: Invalid ID supplied
+          description: "Invalid ID supplied"
         404:
-          description: Program not found
+          description: "Program not found"
   /outcome/{provider_id}/{program_id}:
     get:
       tags:
-      - outcome
-      summary: Get all programs given the provider ID
-      description: Returns all programs given the provider's identifier
+      - "outcome"
+      summary: "Get all programs given the provider ID"
+      description: "Returns all programs given the provider's identifier"
       operationId: apis.outcome.Program
       produces:
-      - application/json
+      - "application/json"
       parameters:
       - name: provider_id
         in: path
-        description: The provider identifier
+        description: "The provider identifier"
         required: true
-        type: integer
-        format: int64
+        type: "integer"
+        format: "int64"
       - name: program_id
         in: path
-        description: The program CIP code
+        description: "The program CIP code"
         required: true
-        type: integer
-        format: int64
+        type: "integer"
+        format: "int64"
       responses:
         200:
-          description: successful operation
+          description: "successful operation"
           schema:
-            $ref: '#/definitions/Provider'
+            $ref: "#/definitions/Provider"
         400:
-          description: Invalid ID supplied
+          description: "Invalid ID supplied"
         404:
-          description: Program not found
+          description: "Program not found"
+
 definitions:
   Provider:
-    type: object
+    type: "object"
     required:
-    - provider_name
+    - "provider_name"
     properties:
       provider_id:
-        type: integer
-        format: int64
+        type: "integer"
+        format: "int64"
       provider_name:
-        type: string
+        type: "string"
       provider_type:
-        type: string
-    example:
-      provider_type: provider_type
-      provider_id: 0
-      provider_name: provider_name
+        type: "string"
     xml:
-      name: Provider
+      name: "Provider"
   Program:
-    type: object
+    type: "object"
     required:
-    - program_type
+    - "program_type"
     properties:
       program_cip:
-        type: string
+        type: "string"
       program_type:
-        type: string
-    example:
-      program_type: program_type
-      program_cip: program_cip
+        type: "string"
     xml:
-      name: Program
+      name: "Program"
