@@ -9,7 +9,7 @@ info:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 basePath: "/api/v0"
-host: "tpot-etp-api.herokuapp.com"
+host: tpot-etp-api.herokuapp.com
 schemes:
 - "https"
 paths:
