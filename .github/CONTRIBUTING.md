@@ -1,6 +1,6 @@
 # Contributing
 
-If you would like to contribute to this repository, please first ensure you grab items from the [issues list](https://github.com/workforce-data-initiative/etp-api/issues).
+If you would like to contribute to this repository, please first ensure you grab items from the [issues list](https://github.com/workforce-data-initiative/tpot-api/issues).
 
 ## Git Workflow
 

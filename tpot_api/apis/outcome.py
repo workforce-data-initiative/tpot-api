@@ -1,7 +1,7 @@
 from flask_restplus import Namespace, Resource, fields
-from etp_api.database import model
+from tpot_api.database import model
 
-api = Namespace('outcome', description='ETP outcome scorecards')
+api = Namespace('outcome', description='TPOT outcome scorecards')
 
 
 @api.route('/<int:provider_id>/<int:program_id>')
@@ -9,7 +9,7 @@ api = Namespace('outcome', description='ETP outcome scorecards')
 @api.param('program_id', 'The program CIP code')
 @api.response(404, 'Program not found')
 class Program(Resource):
-    @api.doc("get ETP scorecard for a provider's program")
+    @api.doc("get TPOT scorecard for a provider's program")
     def get(self, provider_id, program_id):
         '''Fetch all programs given the provider's identifier'''
         try:

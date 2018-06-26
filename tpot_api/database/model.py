@@ -1,5 +1,5 @@
 import itertools
-from etp_api import db
+from tpot_api import db
 
 
 def get_all_providers():
