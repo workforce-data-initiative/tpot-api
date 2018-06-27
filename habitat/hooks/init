@@ -3,6 +3,6 @@
 # Allows to see errors as they occur
 exec 2>&1
 
-ln -fs {{pkg.path}}/etp_api {{pkg.svc_var_path}}
+ln -fs {{pkg.path}}/tpot_api {{pkg.svc_var_path}}
 ln -fs {{pkg.path}}/venv {{pkg.svc_var_path}}
 ln -fs {{pkg.path}}/*.py {{pkg.svc_var_path}}

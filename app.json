@@ -1,7 +1,7 @@
 {
-  "name": "ETP-API",
-  "description": "A web service that provides an API for aggregated ETP outcomes",
-  "repository": "https://github.com/workforce-data-initiative/etp-api",
+  "name": "TPOT-API",
+  "description": "A web service that provides an API for aggregated TPOT outcomes",
+  "repository": "https://github.com/workforce-data-initiative/tpot-api",
   "keywords": ["python", "flask", "swagger"],
   "addons": [
     {

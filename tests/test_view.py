@@ -1,6 +1,6 @@
 import unittest
 
-from etp_api import app as application
+from tpot_api import app as application
 
 
 class TestBase(unittest.TestCase):
@@ -23,7 +23,7 @@ class TestBase(unittest.TestCase):
         result = self.app.get('/api/v0/')
 
         # assert the data of the response
-        self.assertIn('ETP-API', str(result.data))
+        self.assertIn('TPOT-API', str(result.data))
 
 
 if __name__ == '__main__':

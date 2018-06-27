@@ -1,6 +1,6 @@
 [run]
 branch = True
-include = etp_api/*
+include = tpot_api/*
 omit =
     */tests/*
     test_*

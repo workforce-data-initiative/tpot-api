@@ -21,9 +21,9 @@ jobs:
           name: Running tests
           command: |
             . ./venv/bin/activate
-            nosetests --with-coverage -v --cover-package=etp_api
+            nosetests --with-coverage -v --cover-package=tpot_api
             coverage report -m
             coveralls
       - store_artifacts:
           path: test-reports/
-          destination: etp-api
+          destination: tpot-api
