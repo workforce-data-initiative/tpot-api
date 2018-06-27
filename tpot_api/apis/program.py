@@ -1,5 +1,5 @@
 from flask_restplus import Namespace, Resource, fields
-from etp_api.database import model
+from tpot_api.database import model
 
 api = Namespace('program', description='Program related operations')
 

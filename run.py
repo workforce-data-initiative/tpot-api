@@ -1,4 +1,4 @@
-from etp_api import app
+from tpot_api import app
 import os
 
 port = os.environ.get('PORT', 8080)

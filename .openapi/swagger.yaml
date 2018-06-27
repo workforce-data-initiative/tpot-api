@@ -1,14 +1,15 @@
 swagger: "2.0"
 info:
-  description: "This is the OpenAPI spec for Training Providers and Programs Outcomes API."
-  version: "0.0.1"
-  title: "ETP-API"
+  description: "This is the OpenAPI spec for Training Provider Outcomes Toolkit API."
+  version: "1.0.0"
+  title: "TPOT-API"
   contact:
     email: "engineering@brighthive.io"
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 basePath: "/api/v0"
+host: tpot-etp-api.herokuapp.com
 schemes:
 - "https"
 paths:
@@ -152,5 +153,3 @@ definitions:
         type: "string"
     xml:
       name: "Program"
-
-

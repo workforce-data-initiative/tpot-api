@@ -1,6 +1,6 @@
 import json
 import pandas as pd
-from etp_api import db
+from tpot_api import db
 
 configobj = json.load(open("config/config.json"))
 

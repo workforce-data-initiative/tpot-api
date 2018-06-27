@@ -1,9 +1,37 @@
-ETP-API
+TPOT-API
 =======
 
-**etp-api** is a framework for a web service that provides an API for aggregated ETP outcomes. The default setting for the server is Heroku with Heroku Postgres database. The goal is for every institution to have an easy deployment for their ETP outcomes that could be used in more sophisticated tools, analyses and downstream applications by developers.
+[![Coverage Status](https://coveralls.io/repos/github/workforce-data-initiative/tpot-api/badge.svg?branch=chore/create-tests)](https://coveralls.io/github/workforce-data-initiative/tpot-api?branch=chore/create-tests)
 
-[live demo](http://etp-api.dataatwork.org/api/v0)
+**tpot-api** is a framework for a web service that provides an API for aggregated TPOT outcomes. The default setting for the server is Heroku with Heroku Postgres database. The goal is for every institution to have an easy deployment for their TPOT outcomes that could be used in more sophisticated tools, analyses and downstream applications by developers.
+
+[live demo](http://etp-api.dataatwork.org/api/v0) (We initially called it *ETP-API*)
+
+# Design and Documentation
+The API spec can be publicly viewed [here](https://app.swaggerhub.com/apis/BrightHive/tpot-api) and is hosted [here](https://docs.brighthive.io/v1.0/reference#provider).
+
+The folder [.openapi](/openapi) was generated automatically by SwaggerHub. We have set up [`Github Sync`](https://app.swaggerhub.com/help/integrations/github-sync) for the API spec on Swaggerhub. It promises to automatically update the spec on Github with changes done in SwaggerrHub. The API design and documentation process, therefore, is that all stakeholders collaborate on SwaggerHub and the update is synced on Github upon save.
+
+> NB
+
+We noted however that this integration is still buggy (It doesn't sync with Github on save). The integration works well for setting up this workflow for a new repo. So we activated [`Github Push`](https://app.swaggerhub.com/help/integrations/github-push) for the syncing. The spec file is at [.openapi/swagger.yaml](.openapi/swagger.yaml).
+
+### To adopt this workflow
+
+For a similar workflow, you'll find that the docs in [`Github Push`](https://app.swaggerhub.com/help/integrations/github-push) and [`Github Sync`](https://app.swaggerhub.com/help/integrations/github-sync) are quite straight forward.
+
+Be sure to set:
+- a separate branch other that the main ones (In our case we chose *SWAGGERHUB*)
+- swagger output folder as `.openapi` and 
+- swagger file as `swagger.yaml`
+
+
+Quick run
+------------
+
+- Have `docker` installed
+- Run `docker-compose up` and get to [localhost:8080](http://localhost:8080/)
+- To stop this server, enter `Ctrl+C`
 
 Quick Deployment
 ------------
@@ -25,17 +53,17 @@ Quick Start for Developers
 
 ### 2. Clone repository
 
-**etp-api** is available through cloning the repository and then working from the repository root.
+**tpot-api** is available through cloning the repository and then working from the repository root.
 
 ```bash
-git clone https://github.com/workforce-data-initiative/etp-api.git
-cd etp-api
+git clone https://github.com/workforce-data-initiative/tpot-api.git
+cd tpot-api
 ```
 
 
 ### 3. Virtualenv
 
-**etp-api** depends on python3, so create a virtual environment using a python3 executable. Then activate the virtualenv.
+**tpot-api** depends on python3, so create a virtual environment using a python3 executable. Then activate the virtualenv.
 
 ```bash
 virtualenv venv -p /usr/bin/python3
@@ -49,15 +77,21 @@ Install requirements.
 pip install -r requirements.txt
 ```
 
-### 5. Run and deploy
+### 5. Running tests
 
-Run the `deploy.sh` and enter the right information for Heroku username and password. The **etp-api** server will be deployed on Heroku.
+```bash
+nosetests --with-coverage -v --cover-package=tpot_api
+```
+
+### 6. Run and deploy
+
+Run the `deploy.sh` and enter the right information for Heroku username and password. The **tpot-api** server will be deployed on Heroku.
 
 ```bash
 ./deploy.sh
 ```
 
-### 6. Automating deployment using habitat
+### 7. Automating deployment using habitat
 
 [Habitat](https://www.habitat.sh/) helps package an app or service into containers that can be run in any infrastructure, without committing to a specific container format or platform.
 
@@ -85,10 +119,10 @@ This is how it should look like when running the setup:
 <img width="636" alt="screenshot 2017-07-28 18 18 26" src="https://user-images.githubusercontent.com/15085180/28724015-5ac259ca-73c1-11e7-9eda-94e1fe74b3f2.png">
 
 
-#### Running etp-api using habitat
+#### Running tpot-api using habitat
 * Cd into the repo's directory
 ```bash
-cd etp-api
+cd tpot-api
 ```
 
 * Enter the habitat studio
@@ -96,34 +130,34 @@ cd etp-api
 hab studio enter
 ```
 This is an awesome isolated environment for building great things so that when building, it doesn't affect anything on your computer.
-Let's go ahead and build the etp-api!
+Let's go ahead and build the tpot-api!
 
-* Inside the studio, run the `build` command to execute the etp-api plan
+* Inside the studio, run the `build` command to execute the tpot-api plan
 ```bash
 [5][default:/src:0]# build
 ```
 When finished building, you should see this message
-`etp-api: I love it when a plan.sh comes together.`
+`tpot-api: I love it when a plan.sh comes together.`
 
-The build bundles up the etp-api source code, dependencies, runtime and other server configurations into a habitat .hart package. This package can now be exported to docker.
+The build bundles up the tpot-api source code, dependencies, runtime and other server configurations into a habitat .hart package. This package can now be exported to docker.
 
 In linux environments, the package can then be run directly using this simple command:
 ```bash
-$ hab start brighthive/etp-api
+$ hab start brighthive/tpot-api
 ```
 
 #### Exporting to docker
 You can export the created .hart package into a docker container using the `hab pkg export docker` command as follows:
 
 ```bash
-[5][default:/src:0]# hab pkg export docker brighthive/etp-api
+[5][default:/src:0]# hab pkg export docker brighthive/tpot-api
 ```
 
 #### All systems go!
 After exiting the studio by typing `exit`, run the docker container as follows:
 
 ```bash
-$ docker run -it -p 8080:8080 brighthive/etp-api
+$ docker run -it -p 8080:8080 brighthive/tpot-api
 ```
 We're cooking with gas! 🔥 🚀
 
