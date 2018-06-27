@@ -5,7 +5,7 @@ TPOT-API
 
 **tpot-api** is a framework for a web service that provides an API for aggregated TPOT outcomes. The default setting for the server is Heroku with Heroku Postgres database. The goal is for every institution to have an easy deployment for their TPOT outcomes that could be used in more sophisticated tools, analyses and downstream applications by developers.
 
-[live demo](http://tpot-api.dataatwork.org/api/v0)
+[live demo](http://etp-api.dataatwork.org/api/v0) (We initially called it *ETP-API*)
 
 # Design and Documentation
 The API spec can be publicly viewed [here](https://app.swaggerhub.com/apis/BrightHive/tpot-api) and is hosted [here](https://docs.brighthive.io/v1.0/reference#provider).
