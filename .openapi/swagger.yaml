@@ -1,8 +1,8 @@
 swagger: "2.0"
 info:
-  description: "This is the OpenAPI spec for Training Providers and Programs Outcomes API."
+  description: "This is the OpenAPI spec for Training Provider Outcomes Toolkit API."
   version: "1.0.0"
-  title: "OUTCOMES-API"
+  title: "TPOT-API"
   contact:
     email: "engineering@brighthive.io"
   license:
