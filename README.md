@@ -1,7 +1,7 @@
 TPOT-API
 =======
 
-[![Coverage Status](https://coveralls.io/repos/github/workforce-data-initiative/tpot-api/badge.svg?branch=chore/create-tests)](https://coveralls.io/github/workforce-data-initiative/tpot-api?branch=chore/create-tests)
+[![Coverage Status](https://coveralls.io/repos/github/workforce-data-initiative/tpot-api/badge.svg?branch=master)](https://coveralls.io/github/workforce-data-initiative/tpot-api?branch=master)
 
 **tpot-api** is a framework for a web service that provides an API for aggregated TPOT outcomes. The default setting for the server is Heroku with Heroku Postgres database. The goal is for every institution to have an easy deployment for their TPOT outcomes that could be used in more sophisticated tools, analyses and downstream applications by developers.
 
